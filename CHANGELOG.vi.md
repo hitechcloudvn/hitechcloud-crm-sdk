@@ -9,6 +9,15 @@ Mọi thay đổi đáng chú ý của HiTechCloud CRM SDK đều được ghi l
 Định dạng dựa trên [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 và dự án tuân theo [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-11-16
+
+### Đã sửa
+- Các kiểu lỗi của SDK Go giờ tuân thủ đúng giao diện `error`. Type gốc được
+  đổi tên thành `APIError` (`Error` giữ lại làm type alias) để trường nhúng
+  không còn che khuất method `Error()` của các type bọc (`ValidationError`,
+  `AuthenticationError`, `AuthorizationError`, `NotFoundError`,
+  `ConflictError`, `RateLimitError`, `ServerError`).
+
 ## [1.0.0] - 2026-11-01
 
 ### Thêm
@@ -32,4 +41,5 @@ và dự án tuân theo [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   cốt lõi.
 - Tài liệu tiếng Việt dưới `docs/`.
 
+[1.0.1]: https://github.com/hitechcloudvn/hitechcloud-crm-sdk/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/hitechcloudvn/hitechcloud-crm-sdk/releases/tag/v1.0.0
