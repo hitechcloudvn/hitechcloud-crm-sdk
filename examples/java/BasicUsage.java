@@ -1,6 +1,6 @@
-// HiTechCloud CRM — Java example
+// HiTechCloud CRM — Java example / Ví dụ Java
 //
-// Build with the vn.hitechcloud:crm-sdk dependency, then:
+// Build with the vn.hitechcloud:crm-sdk dependency, then: / Biên dịch với dependency vn.hitechcloud:crm-sdk, sau đó:
 //   CRM_CLIENT_ID=... CRM_CLIENT_SECRET=... java BasicUsage.java   (Java 11+ single-file)
 
 import vn.hitechcloud.crm.CRMClient;
@@ -22,7 +22,7 @@ public class BasicUsage {
                 30,
                 3);
 
-        // Create a contact
+        // Create a contact / Tạo một liên hệ
         Map<String, Object> created = crm.contacts().create(Map.of(
                 "first_name", "Nguyen",
                 "last_name", "Van A",
@@ -34,15 +34,15 @@ public class BasicUsage {
         String contactId = (String) data.get("id");
         System.out.println("Created contact: " + contactId);
 
-        // Update + fetch
+        // Update + fetch / Cập nhật + lấy dữ liệu
         crm.contacts().update(contactId, Map.of("lifecycle_stage", "customer"));
         System.out.println("Contact: " + crm.contacts().get(contactId).get("data"));
 
-        // List with filter
+        // List with filter / Liệt kê có bộ lọc
         Map<String, Object> customers = crm.contacts().list(Map.of("lifecycle_stage", "customer", "per_page", "50"));
         System.out.println("Customers meta: " + customers.get("meta"));
 
-        // Create a deal
+        // Create a deal / Tạo một cơ hội
         Map<String, Object> deal = crm.deals().create(Map.of(
                 "title", "Goi Cloud Server",
                 "pipeline_id", "pl_sales",
@@ -51,11 +51,11 @@ public class BasicUsage {
                 "contact_id", contactId));
         System.out.println("Created deal: " + deal.get("data"));
 
-        // Register a webhook
+        // Register a webhook / Đăng ký webhook
         crm.webhooks().register("https://your-app.vn/hooks/crm",
                 List.of("contact.created", "deal.won"), "whsec_6b3c15aa");
 
-        // Error handling
+        // Error handling / Xử lý lỗi
         try {
             crm.contacts().get("con_missing");
         } catch (NotFoundException e) {

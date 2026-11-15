@@ -1,9 +1,14 @@
-# Xác thực & Access Token
+# Authentication & Access Token
 
-Mọi endpoint của **HiTechCloud CRM API** yêu cầu xác thực bằng Access Token dạng
-Bearer. Token được cấp theo luồng **OAuth2 Client Credentials**.
+> **English** | [Tiếng Việt](authentication.vi.md)
 
-## Luồng cấp token
+---
+
+Every **HiTechCloud CRM API** endpoint requires authentication with a Bearer
+access token. Tokens are issued through the **OAuth2 Client Credentials**
+flow.
+
+## Token issuance flow
 
 ```
 client_id + client_secret + scope
@@ -12,13 +17,13 @@ client_id + client_secret + scope
 POST /v1/oauth/token  (grant_type=client_credentials)
         │
         ▼
-access_token (Bearer, hết hạn sau expires_in giây)
+access_token (Bearer, expires after expires_in seconds)
         │
         ▼
-Authorization: Bearer <access_token>  ← mọi request /v1/*
+Authorization: Bearer <access_token>  ← every /v1/* request
 ```
 
-## Đổi lấy token
+## Exchange credentials for a token
 
 ```bash
 curl -X POST "https://crm-gateways.hitechcloud.vn/v1/oauth/token" \
@@ -31,7 +36,7 @@ curl -X POST "https://crm-gateways.hitechcloud.vn/v1/oauth/token" \
   }'
 ```
 
-Phản hồi:
+Response:
 
 ```json
 {
@@ -45,7 +50,7 @@ Phản hồi:
 }
 ```
 
-## Gửi token trong header
+## Send the token in the header
 
 ```http
 Authorization: Bearer crm_at_9f8e7d6c5b4a3210
@@ -53,22 +58,23 @@ Content-Type: application/json
 Accept: application/json
 ```
 
-## Scope quyền truy cập
+## Access scopes
 
-| Scope | Quyền |
-|-------|-------|
-| `contacts:read` | Đọc liên hệ và công ty |
-| `contacts:write` | Tạo/sửa/xoá liên hệ và công ty |
-| `deals:read` | Đọc cơ hội, pipeline và giai đoạn |
-| `deals:write` | Tạo/sửa/xoá cơ hội và di chuyển giai đoạn |
-| `activities:write` | Ghi nhận hoạt động và ghi chú |
-| `webhooks:manage` | Đăng ký và quản lý webhook |
+| Scope | Permission |
+|-------|------------|
+| `contacts:read` | Read contacts and companies |
+| `contacts:write` | Create/update/delete contacts and companies |
+| `deals:read` | Read deals, pipelines and stages |
+| `deals:write` | Create/update/delete deals and move stages |
+| `activities:write` | Record activities and notes |
+| `webhooks:manage` | Register and manage webhooks |
 
-## SDK tự quản lý token
+## Automatic token management
 
-Tất cả SDK trong kho này đều **tự đổi khoá lấy token, cache và làm mới** trước
-khi hết hạn (sớm 60 giây), đồng thời tự thử lại một lần nếu máy chủ trả `401`.
-Bạn chỉ cần cung cấp `client_id`, `client_secret` và `scope`.
+Every SDK in this repository **exchanges credentials for a token, caches it and
+refreshes it** automatically before expiry (60 seconds early), and retries once
+if the server returns `401`. You only need to supply `client_id`,
+`client_secret` and `scope`.
 
 ```python
 from hitechcloud_crm import CRMClient
@@ -78,19 +84,20 @@ crm = CRMClient(
     client_secret="YOUR_CLIENT_SECRET",
     scope="contacts:read contacts:write",
 )
-# Không cần tự gọi /v1/oauth/token; muốn lấy thủ công:
+# No need to call /v1/oauth/token yourself; to fetch it manually:
 token_data = crm.fetch_token()
 ```
 
-Nếu đã có sẵn token (vd từ hệ thống khác), truyền trực tiếp:
+If you already have a token (e.g. from another system), pass it directly:
 
 ```python
 crm = CRMClient(token="crm_at_9f8e7d6c5b4a3210")
 ```
 
-## Lưu ý bảo mật
+## Security notes
 
-- Access Token hết hạn sau `expires_in` giây (mặc định 3600). Hãy cache token,
-  đừng gọi `/v1/oauth/token` ở mỗi request.
-- Không log hoặc lộ `client_secret`, `access_token` hay `secret` webhook.
-- Dùng Sandbox (`crm-gateways-sandbox.hitechcloud.vn`) khi phát triển.
+- Access tokens expire after `expires_in` seconds (3600 by default). Cache the
+  token; do not call `/v1/oauth/token` on every request.
+- Never log or expose `client_secret`, `access_token` or webhook `secret`
+  values.
+- Use the Sandbox (`crm-gateways-sandbox.hitechcloud.vn`) during development.

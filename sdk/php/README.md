@@ -1,5 +1,9 @@
 # HiTechCloud CRM SDK for PHP
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 Official PHP SDK for the [HiTechCloud CRM API](https://developers.hitechcloud.vn).
 Requires PHP 8.0+ and Guzzle 7.
 

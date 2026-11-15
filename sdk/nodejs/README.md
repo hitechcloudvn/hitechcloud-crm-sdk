@@ -1,5 +1,9 @@
 # @hitechcloudvn/crm-sdk
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 Official Node.js / TypeScript SDK for the
 [HiTechCloud CRM API](https://developers.hitechcloud.vn). Zero runtime
 dependencies — uses the built-in `fetch` and `crypto` (Node 18+).

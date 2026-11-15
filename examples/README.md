@@ -1,5 +1,9 @@
 # Examples
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 Runnable examples for each language SDK. All target the **sandbox** environment
 and read credentials from `CRM_CLIENT_ID` / `CRM_CLIENT_SECRET`.
 

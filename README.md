@@ -1,5 +1,9 @@
 # HiTechCloud CRM SDK
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 [![CI](https://github.com/hitechcloudvn/hitechcloud-crm-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/hitechcloudvn/hitechcloud-crm-sdk/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -165,7 +169,7 @@ if (!verifyWebhookSignature(rawBody, req.headers["x-crm-signature"], secret)) {
 }
 ```
 
-See [`docs/`](docs/README.md) for the full Vietnamese documentation, and
+See [`docs/`](docs/README.md) for the full documentation, and
 [`openapi.json`](openapi.json) for the machine-readable API specification.
 
 ## Rate limits

@@ -1,5 +1,9 @@
 # HiTechCloud CRM MCP Server
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 A [Model Context Protocol](https://modelcontextprotocol.io) server that exposes
 core HiTechCloud CRM operations as tools an AI assistant can call.
 

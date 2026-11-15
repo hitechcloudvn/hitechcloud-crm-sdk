@@ -1,46 +1,51 @@
-# Tài liệu HiTechCloud CRM SDK
+# HiTechCloud CRM SDK Documentation
 
-Bộ SDK chính thức cho **HiTechCloud CRM API** — quản lý liên hệ, công ty, cơ hội
-bán hàng, pipeline, hoạt động, báo giá và webhook thời gian thực từ ứng dụng của
-bạn.
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
+The official SDK suite for the **HiTechCloud CRM API** — manage contacts,
+companies, deals, pipelines, activities, quotes and real-time webhooks from
+your own applications.
 
 - Host: `https://crm-gateways.hitechcloud.vn`
-- Tiền tố phiên bản: `/v1`
-- Xác thực: OAuth2 `client_credentials` → Bearer token
+- Version prefix: `/v1`
+- Authentication: OAuth2 `client_credentials` → Bearer token
 
-## Mục lục
+## Table of contents
 
-| Trang | Nội dung |
-|-------|----------|
-| [Bắt đầu nhanh](getting-started.md) | Cài đặt, tạo client và gọi yêu cầu đầu tiên |
-| [Xác thực](authentication.md) | Luồng OAuth2, scope và quản lý token |
-| [Tham chiếu API](api-reference.md) | Tài nguyên, endpoint và phương thức SDK |
-| [Xử lý lỗi](error-handling.md) | Mã lỗi, ngoại lệ và cách xử lý |
-| [Phân trang & Rate limit](rate-limiting.md) | Phân trang và giới hạn tần suất |
+| Page | Content |
+|------|---------|
+| [Quick start](getting-started.md) | Install the SDK, create a client and make the first request |
+| [Authentication](authentication.md) | OAuth2 flow, scopes and token management |
+| [API reference](api-reference.md) | Resources, endpoints and SDK methods |
+| [Error handling](error-handling.md) | Error codes, exceptions and how to handle them |
+| [Pagination & rate limits](rate-limiting.md) | Pagination and rate limiting |
 
-## Ngôn ngữ hỗ trợ
+## Supported languages
 
-| Ngôn ngữ | Gói |
-|----------|-----|
+| Language | Package |
+|----------|---------|
 | Node.js / TypeScript | `@hitechcloudvn/crm-sdk` (npm) |
 | Python | `hitechcloud-crm` (PyPI) |
 | PHP | `hitechcloudvn/crm-sdk` (Composer) |
 | Go | `github.com/hitechcloudvn/hitechcloud-crm-sdk/go` |
 | Java | `vn.hitechcloud:crm-sdk` (Maven) |
 
-## Tài nguyên
+## Resources
 
-Liên hệ, công ty, cơ hội, pipeline, giai đoạn, hoạt động, công việc, cuộc gọi,
-email, cuộc hẹn, ghi chú, nhãn, phân khúc, trường tùy chỉnh, nguồn khách hàng,
-sản phẩm, báo giá, tệp đính kèm, người dùng và nhóm — mỗi loại đều có đầy đủ
-`list`, `get`, `create`, `update`, `delete`. Ngoài ra: thao tác hàng loạt
-(contacts, deals), nhập/xuất CSV, tải tệp và đăng ký webhook.
+Contacts, companies, deals, pipelines, stages, activities, tasks, calls,
+emails, meetings, notes, tags, segments, custom fields, lead sources,
+products, quotes, files, users and teams — each with full `list`, `get`,
+`create`, `update` and `delete`. Plus: bulk operations (contacts, deals),
+CSV import/export, file uploads and webhook registration.
 
-## Môi trường
+## Environments
 
-| Môi trường | Base URL |
-|------------|----------|
+| Environment | Base URL |
+|-------------|----------|
 | Production | `https://crm-gateways.hitechcloud.vn` |
 | Sandbox | `https://crm-gateways-sandbox.hitechcloud.vn` |
 
-Xem thêm `openapi.json` ở thư mục gốc để lấy đặc tả API ở định dạng máy đọc được.
+See `openapi.json` in the repository root for the machine-readable API
+specification.

@@ -1,5 +1,9 @@
 # HiTechCloud CRM SDK for Python
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 Official Python SDK for the [HiTechCloud CRM API](https://developers.hitechcloud.vn).
 
 ## Install

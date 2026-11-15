@@ -1,6 +1,6 @@
-"""HiTechCloud CRM — Python example.
+"""HiTechCloud CRM — Python example. / Ví dụ Python.
 
-Run:
+Run: / Cách chạy:
     pip install hitechcloud-crm
     export CRM_CLIENT_ID=... CRM_CLIENT_SECRET=...
     python basic_usage.py
@@ -19,7 +19,7 @@ def main() -> None:
         sandbox=True,
     )
 
-    # Create a contact
+    # Create a contact / Tạo một liên hệ
     created = crm.contacts.create(
         first_name="Nguyen",
         last_name="Van A",
@@ -30,15 +30,15 @@ def main() -> None:
     contact_id = created["data"]["id"]
     print("Created contact:", contact_id)
 
-    # Update + fetch
+    # Update + fetch / Cập nhật + lấy dữ liệu
     crm.contacts.update(contact_id, lifecycle_stage="customer", tags=["vip"])
     print("Contact:", crm.contacts.get(contact_id)["data"])
 
-    # List with filter + pagination
+    # List with filter + pagination / Liệt kê có bộ lọc + phân trang
     customers = crm.contacts.list(lifecycle_stage="customer", per_page=50)
     print("Customers on page 1:", len(customers["data"]))
 
-    # Create a deal
+    # Create a deal / Tạo một cơ hội
     deal = crm.deals.create(
         title="Goi Cloud Server",
         pipeline_id="pl_sales",
@@ -48,14 +48,14 @@ def main() -> None:
     )
     print("Created deal:", deal["data"]["id"])
 
-    # Register a webhook
+    # Register a webhook / Đăng ký webhook
     crm.webhooks.register(
         "https://your-app.vn/hooks/crm",
         events=["contact.created", "deal.won"],
         secret="whsec_6b3c15aa",
     )
 
-    # Error handling
+    # Error handling / Xử lý lỗi
     try:
         crm.contacts.get("con_missing")
     except NotFoundError:

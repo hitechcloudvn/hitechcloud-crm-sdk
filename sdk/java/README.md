@@ -1,5 +1,9 @@
 # HiTechCloud CRM SDK for Java
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 Official Java SDK for the [HiTechCloud CRM API](https://developers.hitechcloud.vn).
 Java 11+, Gson for JSON, the built-in `java.net.http` client for transport.
 

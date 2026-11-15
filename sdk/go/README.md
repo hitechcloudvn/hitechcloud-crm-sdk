@@ -1,5 +1,9 @@
 # HiTechCloud CRM SDK for Go
 
+> **English** | [Tiếng Việt](README.vi.md)
+
+---
+
 Official Go SDK for the [HiTechCloud CRM API](https://developers.hitechcloud.vn).
 Standard library only — no third-party dependencies.
 

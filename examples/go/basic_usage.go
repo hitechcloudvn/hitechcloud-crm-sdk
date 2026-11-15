@@ -1,6 +1,6 @@
-// HiTechCloud CRM — Go example
+// HiTechCloud CRM — Go example / Ví dụ Go
 //
-// Run:
+// Run: / Cách chạy:
 //   go mod init example && go get github.com/hitechcloudvn/hitechcloud-crm-sdk/go
 //   CRM_CLIENT_ID=... CRM_CLIENT_SECRET=... go run basic_usage.go
 package main
@@ -27,7 +27,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Create a contact
+	// Create a contact / Tạo một liên hệ
 	created, err := client.Contacts.Create(map[string]interface{}{
 		"first_name":      "Nguyen",
 		"last_name":       "Van A",
@@ -42,19 +42,19 @@ func main() {
 	contactID := data["id"].(string)
 	fmt.Println("Created contact:", contactID)
 
-	// Update + fetch
+	// Update + fetch / Cập nhật + lấy dữ liệu
 	if _, err := client.Contacts.Update(contactID, map[string]interface{}{"lifecycle_stage": "customer"}); err != nil {
 		log.Fatal(err)
 	}
 
-	// List with filter
+	// List with filter / Liệt kê có bộ lọc
 	customers, err := client.Contacts.List(map[string]string{"lifecycle_stage": "customer", "per_page": "50"})
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Customers payload: %v\n", customers["meta"])
 
-	// Create a deal
+	// Create a deal / Tạo một cơ hội
 	deal, err := client.Deals.Create(map[string]interface{}{
 		"title":       "Goi Cloud Server",
 		"pipeline_id": "pl_sales",
@@ -67,7 +67,7 @@ func main() {
 	}
 	fmt.Println("Created deal:", deal["data"].(map[string]interface{})["id"])
 
-	// Register a webhook
+	// Register a webhook / Đăng ký webhook
 	if _, err := client.Webhooks.Register(
 		"https://your-app.vn/hooks/crm",
 		[]string{"contact.created", "deal.won"},
@@ -76,7 +76,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// Error handling
+	// Error handling / Xử lý lỗi
 	_, err = client.Contacts.Get("con_missing")
 	var nf *crm.NotFoundError
 	var rl *crm.RateLimitError

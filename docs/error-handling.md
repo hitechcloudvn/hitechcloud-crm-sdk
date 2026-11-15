@@ -1,53 +1,57 @@
-# Mã lỗi & Xử lý lỗi
+# Error codes & handling
 
-Khi request không thành công, API trả mã HTTP phù hợp cùng **envelope lỗi** có
-`status: "error"`, `code` và `message`. Hãy dựa vào `code` (ổn định) thay vì
-`message` để xử lý logic.
+> **English** | [Tiếng Việt](error-handling.vi.md)
 
-## Envelope lỗi
+---
+
+When a request fails, the API returns an appropriate HTTP status code along
+with an **error envelope** carrying `status: "error"`, `code` and `message`.
+Base your logic on `code` (stable) rather than `message`.
+
+## Error envelope
 
 ```json
 {
   "status": "error",
   "code": "VALIDATION_ERROR",
-  "message": "Truong email khong dung dinh dang.",
+  "message": "Email field format is invalid.",
   "errors": {
-    "email": ["Dinh dang email khong hop le"]
+    "email": ["Invalid email format"]
   }
 }
 ```
 
-## Mã trạng thái HTTP
+## HTTP status codes
 
-| HTTP | Ý nghĩa |
+| HTTP | Meaning |
 |------|---------|
-| `200 OK` | Thành công |
-| `201 Created` | Tạo mới thành công |
-| `207 Multi-Status` | Kết quả từng phần (bulk) |
-| `400 Bad Request` | Tham số không hợp lệ |
-| `401 Unauthorized` | Thiếu hoặc sai Access Token |
-| `403 Forbidden` | Token thiếu scope cho thao tác này |
-| `404 Not Found` | Không tìm thấy tài nguyên |
-| `409 Conflict` | Xung đột (vd trùng email) |
-| `422 Unprocessable Entity` | Dữ liệu không qua kiểm tra nghiệp vụ |
-| `429 Too Many Requests` | Vượt giới hạn tần suất |
-| `500 Internal Server Error` | Lỗi phía máy chủ |
+| `200 OK` | Success |
+| `201 Created` | Created successfully |
+| `207 Multi-Status` | Partial results (bulk) |
+| `400 Bad Request` | Invalid parameters |
+| `401 Unauthorized` | Missing or invalid access token |
+| `403 Forbidden` | Token lacks the scope for this operation |
+| `404 Not Found` | Resource not found |
+| `409 Conflict` | Conflict (e.g. duplicate email) |
+| `422 Unprocessable Entity` | Data failed business validation |
+| `429 Too Many Requests` | Rate limit exceeded |
+| `500 Internal Server Error` | Server-side error |
 
-## Mã lỗi chuỗi (code)
+## Error code strings
 
-| code | HTTP | Mô tả |
-|------|------|-------|
-| `UNAUTHORIZED` | 401 | Token không hợp lệ hoặc đã hết hạn |
-| `FORBIDDEN` | 403 | Token thiếu scope cần thiết |
-| `NOT_FOUND` | 404 | ID tài nguyên không tồn tại |
-| `VALIDATION_ERROR` | 400/422 | Tham số hoặc payload sai định dạng |
-| `DUPLICATE_RESOURCE` | 409 | Tài nguyên đã tồn tại |
-| `TOO_MANY_REQUESTS` | 429 | Vượt giới hạn tần suất, xem `Retry-After` |
-| `INTERNAL_ERROR` | 500 | Lỗi không mong muốn phía hệ thống |
+| code | HTTP | Description |
+|------|------|-------------|
+| `UNAUTHORIZED` | 401 | Token invalid or expired |
+| `FORBIDDEN` | 403 | Token lacks the required scope |
+| `NOT_FOUND` | 404 | Resource ID does not exist |
+| `VALIDATION_ERROR` | 400/422 | Malformed parameters or payload |
+| `DUPLICATE_RESOURCE` | 409 | Resource already exists |
+| `TOO_MANY_REQUESTS` | 429 | Rate limit exceeded, see `Retry-After` |
+| `INTERNAL_ERROR` | 500 | Unexpected server-side error |
 
-## Ngoại lệ trong SDK
+## SDK exceptions
 
-Mỗi SDK ánh xạ mã HTTP sang một lớp ngoại lệ:
+Each SDK maps HTTP status codes to an exception class:
 
 | HTTP | Python / Node / Go / Java |
 |------|---------------------------|
@@ -56,9 +60,9 @@ Mỗi SDK ánh xạ mã HTTP sang một lớp ngoại lệ:
 | 404 | `NotFoundError` / `NotFoundException` |
 | 409 | `ConflictError` / `ConflictException` |
 | 400, 422 | `ValidationError` / `ValidationException` |
-| 429 | `RateLimitError` / `RateLimitException` (có `retry_after`) |
+| 429 | `RateLimitError` / `RateLimitException` (has `retry_after`) |
 | 5xx | `ServerError` / `ServerException` |
-| khác | `CRMError` / `CRMException` |
+| other | `CRMError` / `CRMException` |
 
 ### Python
 
@@ -70,7 +74,7 @@ try:
 except NotFoundError:
     ...
 except RateLimitError as e:
-    print("thu lai sau", e.retry_after, "giay")
+    print("retry after", e.retry_after, "seconds")
 except ValidationError as e:
     print(e.code, e.errors)
 ```
@@ -116,9 +120,9 @@ try {
 }
 ```
 
-## Thử lại (retry)
+## Retries
 
-Các SDK **tự động thử lại** với độ trễ tăng dần (exponential backoff) cho lỗi
-`429` (tôn trọng `Retry-After`) và `5xx`. Với `400/401/403/404`, thử lại thường
-vô ích — cần sửa request. SDK cũng tự làm mới token và thử lại một lần khi gặp
-`401` do token hết hạn.
+The SDKs **retry automatically** with exponential backoff for `429` errors
+(honoring `Retry-After`) and `5xx` errors. For `400/401/403/404`, retrying is
+usually pointless — the request itself must be fixed. The SDKs also refresh the
+token and retry once on a `401` caused by an expired token.
