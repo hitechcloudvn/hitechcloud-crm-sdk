@@ -1,5 +1,8 @@
 # HiTechCloud CRM SDK
 
+[![CI](https://github.com/hitechcloudvn/hitechcloud-crm-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/hitechcloudvn/hitechcloud-crm-sdk/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > Official multi-language SDK for the **HiTechCloud CRM API** — manage contacts,
 > companies, deals, pipelines, activities, quotes and real-time webhooks from
 > your own applications.
@@ -12,10 +15,10 @@ Docs: [developers.hitechcloud.vn](https://developers.hitechcloud.vn)
 
 | Language | Package | Manifest |
 |----------|---------|----------|
-| Node.js / TypeScript | `@hitechcloud-vietnam/crm-sdk` (npm) | `sdk/nodejs/package.json` |
+| Node.js / TypeScript | `@hitechcloudvn/crm-sdk` (npm) | `sdk/nodejs/package.json` |
 | Python | `hitechcloud-crm` (PyPI) | `sdk/python/pyproject.toml` |
-| PHP | `hitechcloud-vietnam/crm-sdk` (Composer) | `sdk/php/composer.json` |
-| Go | `github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go` | `sdk/go/go.mod` |
+| PHP | `hitechcloudvn/crm-sdk` (Composer) | `sdk/php/composer.json` |
+| Go | `github.com/hitechcloudvn/hitechcloud-crm-sdk/go` | `sdk/go/go.mod` |
 | Java | `vn.hitechcloud:crm-sdk` (Maven) | `sdk/java/pom.xml` |
 
 ## Resources covered
@@ -58,11 +61,11 @@ Available scopes: `contacts:read`, `contacts:write`, `deals:read`,
 ### Node.js / TypeScript
 
 ```bash
-npm install @hitechcloud-vietnam/crm-sdk
+npm install @hitechcloudvn/crm-sdk
 ```
 
 ```typescript
-import { CRMClient } from "@hitechcloud-vietnam/crm-sdk";
+import { CRMClient } from "@hitechcloudvn/crm-sdk";
 
 const crm = new CRMClient({
   clientId: process.env.CRM_CLIENT_ID!,
@@ -101,7 +104,7 @@ contact = crm.contacts.create(first_name="Nguyen", email="vana@example.com")
 ### PHP
 
 ```bash
-composer require hitechcloud-vietnam/crm-sdk
+composer require hitechcloudvn/crm-sdk
 ```
 
 ```php
@@ -119,11 +122,11 @@ $contacts = $crm->contacts()->list(['lifecycle_stage' => 'customer']);
 ### Go
 
 ```bash
-go get github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go
+go get github.com/hitechcloudvn/hitechcloud-crm-sdk/go
 ```
 
 ```go
-import crm "github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go"
+import crm "github.com/hitechcloudvn/hitechcloud-crm-sdk/go"
 
 client, _ := crm.NewClient(
     crm.WithClientCredentials("YOUR_CLIENT_ID", "YOUR_CLIENT_SECRET", "contacts:read contacts:write"),
@@ -155,7 +158,7 @@ The CRM signs every webhook body with HMAC-SHA256 and sends it in the
 `X-CRM-Signature` header. Each SDK ships a verification helper:
 
 ```typescript
-import { verifyWebhookSignature } from "@hitechcloud-vietnam/crm-sdk";
+import { verifyWebhookSignature } from "@hitechcloudvn/crm-sdk";
 
 if (!verifyWebhookSignature(rawBody, req.headers["x-crm-signature"], secret)) {
   return res.status(400).end();
@@ -178,4 +181,4 @@ MIT — see [LICENSE](LICENSE).
 
 - Email: support@hitechcloud.vn
 - Docs: https://developers.hitechcloud.vn
-- Issues: https://github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/issues
+- Issues: https://github.com/hitechcloudvn/hitechcloud-crm-sdk/issues

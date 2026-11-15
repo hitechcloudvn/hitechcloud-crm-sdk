@@ -1,5 +1,5 @@
 {
-  "name": "@hitechcloud-vietnam/crm-mcp-server",
+  "name": "@hitechcloudvn/crm-mcp-server",
   "version": "1.0.0",
   "description": "Model Context Protocol server for the HiTechCloud CRM API",
   "main": "server.js",
@@ -9,7 +9,13 @@
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": ["hitechcloud", "crm", "mcp", "model-context-protocol", "ai"],
+  "keywords": [
+    "hitechcloud",
+    "crm",
+    "mcp",
+    "model-context-protocol",
+    "ai"
+  ],
   "author": "HiTechCloud Vietnam <support@hitechcloud.vn>",
   "license": "MIT",
   "dependencies": {
@@ -17,5 +23,14 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "homepage": "https://developers.hitechcloud.vn/tai-lieu/crm",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hitechcloudvn/hitechcloud-crm-sdk.git",
+    "directory": "mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/hitechcloudvn/hitechcloud-crm-sdk/issues"
   }
 }

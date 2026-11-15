@@ -1,4 +1,4 @@
-# @hitechcloud-vietnam/crm-sdk
+# @hitechcloudvn/crm-sdk
 
 Official Node.js / TypeScript SDK for the
 [HiTechCloud CRM API](https://developers.hitechcloud.vn). Zero runtime
@@ -7,7 +7,7 @@ dependencies — uses the built-in `fetch` and `crypto` (Node 18+).
 ## Install
 
 ```bash
-npm install @hitechcloud-vietnam/crm-sdk
+npm install @hitechcloudvn/crm-sdk
 ```
 
 ## Authentication
@@ -16,7 +16,7 @@ The client performs the OAuth2 `client_credentials` flow and caches/refreshes
 the token automatically:
 
 ```typescript
-import { CRMClient } from "@hitechcloud-vietnam/crm-sdk";
+import { CRMClient } from "@hitechcloudvn/crm-sdk";
 
 const crm = new CRMClient({
   clientId: process.env.CRM_CLIENT_ID!,
@@ -59,7 +59,7 @@ await crm.webhooks.register("https://your-app.vn/hooks/crm", ["contact.created",
 ## Verifying webhooks
 
 ```typescript
-import { verifyWebhookSignature } from "@hitechcloud-vietnam/crm-sdk";
+import { verifyWebhookSignature } from "@hitechcloudvn/crm-sdk";
 
 app.post("/hooks/crm", express.raw({ type: "*/*" }), (req, res) => {
   const ok = verifyWebhookSignature(req.body, req.header("X-CRM-Signature"), process.env.CRM_WEBHOOK_SECRET!);
@@ -72,7 +72,7 @@ app.post("/hooks/crm", express.raw({ type: "*/*" }), (req, res) => {
 ## Error handling
 
 ```typescript
-import { NotFoundError, RateLimitError } from "@hitechcloud-vietnam/crm-sdk";
+import { NotFoundError, RateLimitError } from "@hitechcloudvn/crm-sdk";
 
 try {
   await crm.contacts.get("con_missing");

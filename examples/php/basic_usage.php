@@ -5,7 +5,7 @@ declare(strict_types=1);
 // HiTechCloud CRM — PHP example
 //
 // Run:
-//   composer require hitechcloud-vietnam/crm-sdk
+//   composer require hitechcloudvn/crm-sdk
 //   CRM_CLIENT_ID=... CRM_CLIENT_SECRET=... php basic_usage.php
 
 require __DIR__ . '/vendor/autoload.php';

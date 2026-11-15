@@ -5,10 +5,10 @@ Thank you for your interest in improving the HiTechCloud CRM SDK.
 ## Repository layout
 
 ```
-sdk/nodejs    TypeScript SDK  (@hitechcloud-vietnam/crm-sdk)
+sdk/nodejs    TypeScript SDK  (@hitechcloudvn/crm-sdk)
 sdk/python    Python SDK      (hitechcloud-crm)
-sdk/php       PHP SDK         (hitechcloud-vietnam/crm-sdk)
-sdk/go        Go SDK          (github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go)
+sdk/php       PHP SDK         (hitechcloudvn/crm-sdk)
+sdk/go        Go SDK          (github.com/hitechcloudvn/hitechcloud-crm-sdk/go)
 sdk/java      Java SDK        (vn.hitechcloud:crm-sdk)
 mcp           Node.js MCP server
 docs          Vietnamese documentation

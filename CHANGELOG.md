@@ -28,4 +28,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - A Node.js Model Context Protocol (MCP) server exposing core CRM tools.
 - Vietnamese documentation under `docs/`.
 
-[1.0.0]: https://github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/releases/tag/v1.0.0
+[1.0.0]: https://github.com/hitechcloudvn/hitechcloud-crm-sdk/releases/tag/v1.0.0

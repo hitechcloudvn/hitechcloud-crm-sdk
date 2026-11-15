@@ -1,7 +1,7 @@
 // HiTechCloud CRM — Go example
 //
 // Run:
-//   go mod init example && go get github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go
+//   go mod init example && go get github.com/hitechcloudvn/hitechcloud-crm-sdk/go
 //   CRM_CLIENT_ID=... CRM_CLIENT_SECRET=... go run basic_usage.go
 package main
 
@@ -11,7 +11,7 @@ import (
 	"log"
 	"os"
 
-	crm "github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go"
+	crm "github.com/hitechcloudvn/hitechcloud-crm-sdk/go"
 )
 
 func main() {

@@ -78,7 +78,7 @@ except ValidationError as e:
 ### Node.js / TypeScript
 
 ```typescript
-import { NotFoundError, RateLimitError } from "@hitechcloud-vietnam/crm-sdk";
+import { NotFoundError, RateLimitError } from "@hitechcloudvn/crm-sdk";
 
 try {
   await crm.contacts.get("con_missing");

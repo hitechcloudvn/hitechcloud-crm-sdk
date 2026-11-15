@@ -6,11 +6,11 @@ Standard library only — no third-party dependencies.
 ## Install
 
 ```bash
-go get github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go
+go get github.com/hitechcloudvn/hitechcloud-crm-sdk/go
 ```
 
 ```go
-import crm "github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go"
+import crm "github.com/hitechcloudvn/hitechcloud-crm-sdk/go"
 ```
 
 ## Authentication

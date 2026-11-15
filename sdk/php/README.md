@@ -6,7 +6,7 @@ Requires PHP 8.0+ and Guzzle 7.
 ## Install
 
 ```bash
-composer require hitechcloud-vietnam/crm-sdk
+composer require hitechcloudvn/crm-sdk
 ```
 
 ## Authentication

@@ -22,10 +22,10 @@ bạn.
 
 | Ngôn ngữ | Gói |
 |----------|-----|
-| Node.js / TypeScript | `@hitechcloud-vietnam/crm-sdk` (npm) |
+| Node.js / TypeScript | `@hitechcloudvn/crm-sdk` (npm) |
 | Python | `hitechcloud-crm` (PyPI) |
-| PHP | `hitechcloud-vietnam/crm-sdk` (Composer) |
-| Go | `github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go` |
+| PHP | `hitechcloudvn/crm-sdk` (Composer) |
+| Go | `github.com/hitechcloudvn/hitechcloud-crm-sdk/go` |
 | Java | `vn.hitechcloud:crm-sdk` (Maven) |
 
 ## Tài nguyên

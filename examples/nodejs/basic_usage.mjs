@@ -1,10 +1,10 @@
 // HiTechCloud CRM — Node.js example (ESM)
 //
 // Run:
-//   npm install @hitechcloud-vietnam/crm-sdk
+//   npm install @hitechcloudvn/crm-sdk
 //   CRM_CLIENT_ID=... CRM_CLIENT_SECRET=... node basic_usage.mjs
 
-import { CRMClient, NotFoundError, RateLimitError } from "@hitechcloud-vietnam/crm-sdk";
+import { CRMClient, NotFoundError, RateLimitError } from "@hitechcloudvn/crm-sdk";
 
 async function main() {
   const crm = new CRMClient({

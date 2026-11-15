@@ -22,16 +22,16 @@ export CRM_CLIENT_SECRET="YOUR_CLIENT_SECRET"
 
 ```bash
 # Node.js / TypeScript
-npm install @hitechcloud-vietnam/crm-sdk
+npm install @hitechcloudvn/crm-sdk
 
 # Python
 pip install hitechcloud-crm
 
 # PHP
-composer require hitechcloud-vietnam/crm-sdk
+composer require hitechcloudvn/crm-sdk
 
 # Go
-go get github.com/hitechcloud-vietnam/hitechcloud-crm-sdk/go
+go get github.com/hitechcloudvn/hitechcloud-crm-sdk/go
 ```
 
 ```xml
@@ -51,7 +51,7 @@ làm mới khi hết hạn.
 ### Node.js / TypeScript
 
 ```typescript
-import { CRMClient } from "@hitechcloud-vietnam/crm-sdk";
+import { CRMClient } from "@hitechcloudvn/crm-sdk";
 
 const crm = new CRMClient({
   clientId: process.env.CRM_CLIENT_ID!,
